@@ -1,0 +1,13 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: c97r84s7psuajm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com
+      user: u5h2s7shhkqeo5
+      password: pf373bc6d5cddc47f95a938f4914e895c868ca1e01fc5eeb79ad7413b71c6db40
+      port: 5432
+      dbname: d9snqvovhsjpqs
+      schema: public  # You can modify the schema if needed
+      threads: 4
+      keepalives_idle: 0
