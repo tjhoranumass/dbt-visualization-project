@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBT Pipeline Visualizations</title>
+</head>
+<body>
+    <h1>Total Revenue Over Time</h1>
+    <div>{{ img_html | safe }}</div>
+    <form action="/run_pipeline" method="post">
+        <button type="submit">Run DBT Pipeline</button>
+    </form>
+    <a href="/product_performance">Product Performance</a>
+</body>
+</html>
+

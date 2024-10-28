@@ -1,4 +1,4 @@
-# DBT E-commerce Project
+# DBT Visualization Project
 
 This DBT project is designed to model and transform e-commerce sales data into useful business insights. The project includes raw data ingestion, staging models, and marts for reporting purposes. The transformed data is then used for visualization and analysis.
 
@@ -46,52 +46,25 @@ To run the DBT pipeline, follow these steps:
 
 ## Visualization with Python
 
-After running the DBT pipeline, you can use Python to query the resulting data and create visualizations.
+```
+dbt_project/
+│
+├── models/
+│   └── marts/
+│       └── sales_reporting/
+│           └── customer_lifetime_value.sql
+│           └── orders_by_day.sql
+│           └── product_performance.sql
+│
+├── flask_app/
+│   └── app.py            # Main Flask server file
+│   └── templates/        # HTML templates
+│       └── index.html    # Home page with visualizations
+│
+├── requirements.txt      # Add Flask and DBT dependencies here
+└── README.md
+```
 
-1. **Python Script for Visualization**:
-    Here's an example of a Python script that connects to the PostgreSQL database and visualizes the data using `matplotlib` and `seaborn`.
-
-    ```python
-    import pandas as pd
-    from sqlalchemy import create_engine
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-
-    # PostgreSQL connection string
-    db_connection_url = "postgresql://<username>:<password>@<host>:5432/<database>"
-
-    # Create SQLAlchemy engine
-    engine = create_engine(db_connection_url)
-
-    # Query sales data
-    sales_query = '''
-    SELECT order_date, SUM(total_price) as total_revenue, COUNT(order_id) as total_orders
-    FROM stg_sales
-    GROUP BY order_date
-    ORDER BY order_date;
-    '''
-    sales_data = pd.read_sql(sales_query, engine)
-
-    # Plot total revenue over time
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(data=sales_data, x='order_date', y='total_revenue', marker='o')
-    plt.title('Total Revenue Over Time')
-    plt.xlabel('Order Date')
-    plt.ylabel('Total Revenue ($)')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.show()
-    ```
-
-2. **Running the Script**:
-    To run the Python script:
-    - Save it as `visualize_data.py`.
-    - Run it from the command line:
-      ```bash
-      python visualize_data.py
-      ```
-
-    This will create visualizations based on the transformed data from your DBT pipeline.
 
 ## Additional Notes
 
