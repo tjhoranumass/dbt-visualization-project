@@ -1,6 +1,7 @@
 flask
 flask_sqlalchemy
 matplotlib
+psycopg2
 plotly
 pandas
 sqlalchemy
